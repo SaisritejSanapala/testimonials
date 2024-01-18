@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Testimonials Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        .container {
+            padding: 40px;
+
+        }
+
+        h1 {
+            letter-spacing: 2px;
+            font-size: medium;
+            font-weight: 500;
+        }
+
+        h1,
+        span {
+            color: #5749a6;
+
+
+        }
+
+        h3 {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .inner-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+        }
+
+        .details {
+            background-color: rgba(231, 241, 255, 255);
+            padding: 40px;
+            width: 100%;
+            height: 80%;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        p {
+            width: 70%;
+            font-weight: 400;
+            color: rgba(19, 21, 23, 0.75);
+            font-size: large;
+
+        }
+
+        .carousel {
+            transform: translateX(-25px) translateY(50px);
+        }
+
+        .img-container {
+            width: 100%;
+            height: 70%;
+            border-radius: 5px;
+            margin-right: 0;
+
+        }
+
+        .img-container img {
+            width: 75%;
+            height: 100%;
+            border-radius: 15px;
+            border: 10px solid white;
+        }
+
+        @media screen and (max-width: 991px) {
+            .container {
+                padding: 30px;
+            }
+
+            h1 {
+                font-size: small;
+            }
+
+            p {
+                width: 90%;
+
+            }
+
+            .inner-container {
+                display: flex;
+                flex-direction: column;
+
+
+            }
+
+            .carousel {
+                transform: translateX(25px) translateY(-30px);
+            }
+
+            .details {
+                height: 100%;
+                width: 80%;
+
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1> TESTIMONIALS THAT MEAN THE WORLD TO US</h1>
+        <div class="inner-container">
+            <div class="details">
+
+            </div>
+            <div class="carousel">
+
+                <div class="splide" role="group" aria-label="Splide Basic HTML Example">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <li class="splide__slide" data-id="0">
+                                <div class="img-container">
+                                    <img src="https://www.mapro.com/cdn/shop/files/Kirti_Menon.png?v=1666959020"
+                                        alt="Customer 1">
+                                </div>
+                            </li>
+                            <li class="splide__slide" data-id="1">
+                                <div class="img-container">
+                                    <img src="https://www.mapro.com/cdn/shop/files/654265.jpg?v=1666959598"
+                                        alt="Customer 2">
+                                </div>
+                            </li>
+                            <li class="splide__slide" data-id="2">
+                                <div class="img-container">
+                                    <img src="https://www.mapro.com/cdn/shop/files/612.jpg?v=1666959629"
+                                        alt="Customer 3">
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+
+
+
+
+
+
+
+    <script>
+        const data = {
+            details: [
+                {
+                    id: 0,
+                    content: "Tried Mapro's Kakhra for the very first time, and I had to stop my kids from munching on them because they are too delicious! This is now without a doubt our go-to evening healthy snack.",
+                    name: "Kirti Menon",
+                    occupation: "Mother of 2",
+                },
+                {
+                    id: 1,
+                    content: "Love how the company keeps experimenting with new products! Range of Mazaana chocolates are great conversation starters and definitely the star of every party.",
+                    name: "Manoj Mundhra",
+                    occupation: "Product Manager",
+                },
+                {
+                    id: 2,
+                    content: "Mazaana is my favourite of all Mapro products. Packaging is superb. The taste of it is so good that I can never stop at just one chocolate.",
+                    name: "Jay Mistry",
+                    occupation: "Founder of Zazzy and Petara",
+                },
+            ],
+        };
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var splide = new Splide('.splide');
+            splide.mount();
+            let detailsEl = document.querySelector(".details");
+
+            let initialData = data.details[0];
+            detailsEl.innerHTML = `
+      <p>${initialData.content}</p>
+      <h3>${initialData.name}</h3>
+      <span>${initialData.occupation}</span>
+    `;
+
+
+            splide.on('moved', function (index) {
+                initialData = data.details[index];
+                detailsEl.innerHTML = `
+      <p>${initialData.content}</p>
+      <h3>${initialData.name}</h3>
+      <span>${initialData.occupation}</span>
+    `;
+            })
+        });
+    </script>
+</body>
+
+</html>
